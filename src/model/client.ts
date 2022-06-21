@@ -12,4 +12,6 @@ const ClientSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Client', ClientSchema)
+const Client  = mongoose.model('Client', ClientSchema)
+
+export default Client
