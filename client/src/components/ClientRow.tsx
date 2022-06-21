@@ -1,11 +1,11 @@
 import React from "react";
 import { FaTrash } from "react-icons/fa";
-import { ClientProps, ClientType, ClientArray } from "./Client";
+import { ClientProps, ClientType } from "./Clients";
 import { useMutation } from "@apollo/client";
-import { DELETE_CLIENT } from "../mutation/mutation";
+import { DELETE_CLIENT } from "../mutation/clientMutation";
 import { GET_CLIENTS } from "../queries/clientQueries";
 
-type ClientResult = ClientType[] | any 
+export type ClientResult = ClientType[] | any 
 
 const ClientRow: React.FC<ClientProps> = ({ client }) => {
   const [deleteClient] = useMutation(DELETE_CLIENT, {

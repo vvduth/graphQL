@@ -3,6 +3,7 @@ import { gql, useQuery } from "@apollo/client";
 import { GET_CLIENTS } from "../queries/clientQueries";
 import ClientRow from "./ClientRow";
 import Spinner from "./Spinner";
+import AddClientModel from "./AddClientModel";
 
 export interface ClientType {
     id : string,
@@ -14,15 +15,11 @@ export interface ClientList {
     clients:ClientType[]
 }
 export type ClientArray = ClientType[] | null;
+
 export interface ClientProps {
     client: ClientType ;
 }
-interface ResponseState {
-    loading: boolean, 
-    error: boolean,
-    data: ClientType
-    
-}
+
 
 
 const Client = () => {
@@ -49,7 +46,9 @@ const Client = () => {
                 </tbody>
             </table>
         )} 
+    
     </>
+    
   );
 };
 
