@@ -1,6 +1,8 @@
 import React from "react";
 import { gql, useQuery } from "@apollo/client";
+import { GET_CLIENTS } from "../queries/clientQueries";
 import ClientRow from "./ClientRow";
+import Spinner from "./Spinner";
 
 export interface ClientType {
     id : string,
@@ -8,27 +10,24 @@ export interface ClientType {
     phone: string, 
     email: string
 }
-export interface clientProps {
+export interface ClientList {
+    clients:ClientType[]
+}
+export type ClientArray = ClientType[] | null;
+export interface ClientProps {
     client: ClientType ;
 }
+interface ResponseState {
+    loading: boolean, 
+    error: boolean,
+    data: ClientType
+    
+}
 
-const GET_CLIENTS = gql`
-    query getClients {
-            
-        clients {
-                id
-                name
-                email
-                phone
-            }
-
-
-    }
-`;
 
 const Client = () => {
   const {loading, error, data} =  useQuery(GET_CLIENTS);
-  if (loading) return <p>Loading ...</p>
+  if (loading) return (<Spinner/>)
   if (error) return <p>Something went wrong</p>
   return (
     <>
